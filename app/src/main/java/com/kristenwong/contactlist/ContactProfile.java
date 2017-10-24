@@ -16,6 +16,11 @@ public class ContactProfile implements Serializable {
     private ArrayList<ContactProfile> relationships;
     private boolean isChecked;
 
+    ContactProfile() {
+        relationships = new ArrayList<>();
+        isChecked = false;
+    }
+
     public void setRelationships(ArrayList<ContactProfile> relationships) {
         this.relationships = relationships;
     }

@@ -1,35 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@color/colorBackground"
+        android:layout_margin="15dp">
 
-    <TextView
+        <TextView
         android:id="@+id/title_contact_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/contact_details"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorControlNormal"
         android:textSize="30sp"
         android:layout_centerHorizontal="true"
-        android:paddingTop="10sp"/>
+        android:fontFamily="sans-serif-thin"
+        android:layout_marginTop="15sp"/>
+
+        <LinearLayout
+            android:id="@+id/contact_details_underline"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorControlNormal"
+            android:orientation="horizontal"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="70dp"
+            android:layout_below="@id/title_contact_details"/>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/layout_input_contact_name"
         android:layout_width="match_parent"
         android:layout_height='wrap_content'
         android:textColorHint="@android:color/black"
-        android:paddingTop="5dp"
+        android:paddingTop="15dp"
         android:paddingRight="5dp"
         android:paddingLeft="5dp"
-        android:layout_below="@id/title_contact_details">
+        android:layout_below="@id/contact_details_underline">
 
     <EditText
         android:id="@+id/input_contact_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/contact_name"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorControlNormal"
+        android:fontFamily="sans-serif-thin"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"/>
 
@@ -39,7 +58,7 @@
         android:id="@+id/layout_input_contact_number"
         android:layout_width="match_parent"
         android:layout_height='wrap_content'
-        android:textColorHint="@android:color/black"
+        android:textColorHint="@color/colorControlNormal"
         android:paddingTop="5dp"
         android:paddingRight="5dp"
         android:paddingLeft="5dp"
@@ -51,7 +70,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/phone_number"
         android:inputType="number"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorControlNormal"
+        android:fontFamily="sans-serif-thin"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"/>
 
@@ -62,7 +82,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/relationships"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorControlNormal"
+        android:fontFamily="sans-serif-thin"
         android:textSize="20sp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="15dp"
@@ -73,6 +94,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:divider="@color/colorAccent"
+        android:dividerHeight="1dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:layout_below="@+id/text_relationships">
 
     </ListView>
@@ -87,3 +112,4 @@
 
 
 </RelativeLayout>
+    </LinearLayout>

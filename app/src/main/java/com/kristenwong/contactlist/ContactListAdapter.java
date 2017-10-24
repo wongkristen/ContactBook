@@ -21,13 +21,15 @@ public class ContactListAdapter extends BaseAdapter {
     private ArrayList<ContactProfile> contactList;
     private LayoutInflater mInflater;
     private Context mActivityContext;
+    private boolean mIsContactDetails;
 
     private static final String CONTACT_LIST_ADAPTER_DEBUG_TAG = "ContactList";
 
-    public ContactListAdapter(ArrayList<ContactProfile> contacts, Context appContext, Context activityContext) {
+    public ContactListAdapter(ArrayList<ContactProfile> contacts, Context appContext, Context activityContext, boolean isContactDetails) {
         contactList = contacts;
         mActivityContext = activityContext;
         mInflater = (LayoutInflater) appContext.getSystemService(appContext.LAYOUT_INFLATER_SERVICE);
+        mIsContactDetails = isContactDetails;
     }
 
     @Override
@@ -64,7 +66,7 @@ public class ContactListAdapter extends BaseAdapter {
 
                 Log.d(CONTACT_LIST_ADAPTER_DEBUG_TAG, "Context is instance of ContactDetailsActivity: " + (mActivityContext instanceof ContactDetailsActivity));
 
-                if (mActivityContext instanceof ContactDetailsActivity) {
+                if (mIsContactDetails) {
                     Log.d(CONTACT_LIST_ADAPTER_DEBUG_TAG, "Item moved to correct location on list");
                     int i = 0;
                     while (contactList.get(i).isChecked() && i < contactList.size() - 1 && i < index)

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -27,6 +28,8 @@ public class ContactDetailsActivity extends Activity {
     private String mStringName, mStringPhone;
 
     private static final String KEY = "intent key";
+    private static final String CONTACT_DETAILS_DEBUG_TAG = "ContactList";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +45,7 @@ public class ContactDetailsActivity extends Activity {
 
         mAddContactButton = (Button) findViewById(R.id.button_confirm_add);
 
-        mAdapter = new ContactListAdapter(mContactList, getApplicationContext(), this);
+        mAdapter = new ContactListAdapter(mContactList, getApplicationContext(), this, true);
         mRelationshipList.setAdapter(mAdapter);
 
         mInputContactName.addTextChangedListener(new TextWatcher() {
@@ -90,12 +93,19 @@ public class ContactDetailsActivity extends Activity {
                 int i = 0;
                 while (i < mContactList.size() && mContactList.get(i).isChecked()) {
                     relationships.add(mContactList.get(i));
-                    mContactList.get(i).setChecked(false);
                     i ++;
                 }
                 newContact.setRelationships(relationships);
 
+                i = 0;
+                while (i < mContactList.size() && mContactList.get(i).isChecked()) {
+                    mContactList.get(i).getRelationships().add(newContact);
+                    mContactList.get(i).setChecked(false);
+                    i ++;
+                }
+
                 mContactList.add(newContact);
+
 
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra(KEY, mContactList);
@@ -104,4 +114,6 @@ public class ContactDetailsActivity extends Activity {
             }
         });
     }
+
+
 }

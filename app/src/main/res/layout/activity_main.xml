@@ -2,24 +2,48 @@
 <LinearLayout android:orientation="vertical"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/colorPrimary"
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        android:layout_margin="15dp">
+
     <TextView
+        android:id="@+id/title_contacts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/contacts"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
         android:layout_marginTop="15sp"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"/>
+        android:textSize="40sp"
+        android:textStyle="normal"
+        android:textColor="@android:color/black"
+        android:fontFamily="sans-serif-thin"/>
+
+        <LinearLayout
+            android:id="@+id/contacts_underline"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorControlNormal"
+            android:orientation="horizontal"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="70dp"
+            android:layout_below="@id/title_contacts"/>
 
     <ListView
         android:id="@+id/listview_main_contact_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:divider="@color/colorAccent"
+        android:dividerHeight="1dp"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_below="@id/contacts_underline">
 
     </ListView>
 
@@ -27,14 +51,23 @@
         android:id="@+id/button_add_contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_new_contact"/>
+        android:text="@string/add_new_contact"
+        android:layout_margin="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"/>
 
     <Button
         android:id="@+id/button_delete_contacts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/delete_contact"
+        android:layout_margin="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         />
+
+    </RelativeLayout>
 
 </LinearLayout>
 
